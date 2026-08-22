@@ -9,7 +9,7 @@ inputs:
 outputs:
   answer:
     description: "Odpowiedź na życie, wszechświat i wszystko"
-    value: ${{ steps.deepthought.outputs.answer }}
+    value: ${{ steps.deep-thought.outputs.answer }}
 
 runs:
   using: 'composite'
