@@ -5,7 +5,7 @@ jobs:
   ci-jobs:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@4.1.1
+      - uses: actions/checkout@v4.1.1
       - name: Run mu own composite action
         id: my-action
         uses: ./
