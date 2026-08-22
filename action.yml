@@ -1,0 +1,23 @@
+name: 'Receptura akcji zlozonej'
+description: 'Pozdrawia urzytkownika i zwraca 42'
+
+inputs:
+  who-to-greet:
+    description: 'Kogo pozdrowic'
+    required: true
+    default: 'Świat'
+outputs:
+  answer:
+    description: "Odpowiedź na życie, wszechświat i wszystko"
+    value: ${{ steps.deepthought.outputs.answer }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Awesome bash script action
+      id: deep-thought
+      shell: bash
+      run: |
+        echo "Witaj '${{ inputs.who-to-greet }}'".
+        echo "answer=42" >> $GITHUB_OUTPUT
+        echo "Na razie i dzieki za wszytskie rybki."

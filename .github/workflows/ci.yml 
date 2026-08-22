@@ -1,0 +1,15 @@
+name: 'CI Workflow (przeplyw pracy CI)'
+on: [push, pull_request ]
+
+jobs:
+  ci-jobs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@4.1.1
+      - name: Run mu own composite action
+        id: my-action
+        uses: ./
+        with:
+          who-to-greet: "@mateusz"
+      - name: Output the answer
+        run: echo "Odpowiedz to: ${{ steps.my-action.outputs.answer }}
