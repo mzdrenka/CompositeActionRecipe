@@ -12,4 +12,4 @@ jobs:
         with:
           who-to-greet: "@mateusz"
       - name: Output the answer
-        run: echo "Odpowiedz to: ${{ steps.my-action.outputs.answer }}
+        run: echo "Odpowiedz to ${{ steps.my-action.outputs.answer }}
