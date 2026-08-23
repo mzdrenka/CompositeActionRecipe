@@ -85,4 +85,4 @@ Before publishing in GitHub Marketplace:
 3. add a stable major tag such as `v1`,
 4. reference the action as `mzdrenka/CompositeActionRecipe@v1`.
 
-This repository already includes `action.yml`, so after the description, release, and tags are ready, it can be listed in Marketplace as a GitHub Action.
+This repository already includes `action.yml`, so once the repository description, release, and version tags are ready, it can be listed in Marketplace as a GitHub Action.
