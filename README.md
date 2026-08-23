@@ -1,4 +1,4 @@
-# CompositeActionRecipe
+# Composite Action Recipe
 
 Przykładowa GitHub Action typu composite, gotowa do przygotowania pod publikację w GitHub Marketplace.
 

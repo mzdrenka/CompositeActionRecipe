@@ -11,7 +11,7 @@ outputs:
     description: "The answer to life, the universe, and everything"
     value: ${{ steps.greet.outputs.answer }}
 branding:
-  icon: message-circle
+  icon: message-square
   color: blue
 
 runs:
