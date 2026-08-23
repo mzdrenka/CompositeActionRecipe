@@ -14,10 +14,18 @@ outputs:
 runs:
   using: 'composite'
   steps:
-    - name: Awesome bash script action
-      id: deep-thought
-      shell: bash
-      run: |
-        echo "Witaj '${{ inputs.who-to-greet }}'".
-        echo "answer=42" >> $GITHUB_OUTPUT
-        echo "Na razie i dzieki za wszytskie rybki."
+    - name: Awesome github script
+      uses: actions/github-script@v6
+      with:
+        script: |
+          var whoToGreet = core.getInput('who-to-greet')
+          core.notice(`Hello ${whoToGreet}`)
+          core.setOutput('answer', 42)
+          if (context.eventName === 'issues') {
+           github.rest.issues.createComment({
+             issue_number: context.issue.number,
+             owner: context.repo.owner,
+             repo: context.repo.repo,
+              body: ' Thanks for reporting!'
+           })
+          }
