@@ -1,5 +1,5 @@
-name: 'Receptura akcji zlozonej'
-description: 'Pozdrawia urzytkownika i zwraca 42'
+name: 'Composite Action Recipe Mateusz Zdrenka'
+description: 'Greets a user and returns the answer to life, the universe and everything (42)'
 branding:
   icon: anchor
   color: purple
