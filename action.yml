@@ -1,6 +1,9 @@
-name: 'Composite Action Recipe'
-author: 'Mateusz Zdrenka'
-description: 'Greets a user, returns 42, and can thank issue reporters with a comment'
+name: 'Composite Action Recipe Mateusz Zdrenka'
+description: 'Greets a user and returns the answer to life, the universe and everything (42)'
+branding:
+  icon: anchor
+  color: purple
+author: Mateusz Zdrenka
 
 inputs:
   who-to-greet:
