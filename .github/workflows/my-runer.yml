@@ -5,7 +5,7 @@ on: [workflow_dispatch]
 jobs:
 
   main:
-    runs-on: mati
+    runs-on: self-hosted
     steps:
       - name: Output environment
         shell: bash
