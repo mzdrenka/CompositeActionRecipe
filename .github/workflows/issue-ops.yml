@@ -15,6 +15,8 @@ jobs:
       - name: Issue Forms Body Parser
         id: parse
         uses: zentered/issue-forms-body-parser@v2.0.0
+      - name: Checkout
+        uses: actions/checkout@v4
       - name: Repository Request Validation
         id: repo-request
         env:
