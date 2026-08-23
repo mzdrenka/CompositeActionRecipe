@@ -1,29 +1,29 @@
 # Composite Action Recipe
 
-Przykładowa GitHub Action typu composite, gotowa do przygotowania pod publikację w GitHub Marketplace.
+An example composite GitHub Action prepared for GitHub Marketplace publication.
 
-## Co robi ta akcja
+## What this action does
 
-- wypisuje powitanie dla wskazanego użytkownika,
-- ustawia output `answer` na wartość `42`,
-- przy zdarzeniu `issues.opened` może dodać komentarz z podziękowaniem za zgłoszenie.
+- greets the selected user,
+- exposes the `answer` output with the value `42`,
+- can post a thank-you comment when a new issue is opened.
 
-## Wymagania i uprawnienia
+## Requirements and permissions
 
-Akcja korzysta z `actions/github-script@v6`.
+This action uses `actions/github-script@v6`.
 
-Jeżeli chcesz używać funkcji komentowania zgłoszeń, workflow musi mieć uprawnienie:
+If you want to use the issue-commenting behavior, your workflow must include:
 
 ```yaml
 permissions:
   issues: write
 ```
 
-Jeżeli akcja ma tylko wypisać powitanie i zwrócić output, dodatkowe uprawnienia nie są wymagane.
+If you only need the greeting and output behavior, no extra permissions are required.
 
-## Użycie
+## Usage
 
-### Podstawowy przykład
+### Basic example
 
 ```yaml
 name: Example
@@ -44,7 +44,7 @@ jobs:
       - run: echo "Answer: ${{ steps.recipe.outputs.answer }}"
 ```
 
-### Użycie dla nowych issue
+### Use on newly opened issues
 
 ```yaml
 name: Thank issue reporter
@@ -66,23 +66,23 @@ jobs:
 
 ## Inputs
 
-| Nazwa | Wymagane | Domyślnie | Opis |
+| Name | Required | Default | Description |
 | --- | --- | --- | --- |
-| `who-to-greet` | tak | `Świat` | Nazwa lub handle osoby, którą akcja ma przywitać |
+| `who-to-greet` | yes | `Świat` | Name or handle of the person to greet |
 
 ## Outputs
 
-| Nazwa | Opis |
+| Name | Description |
 | --- | --- |
-| `answer` | Zwraca wartość `42` |
+| `answer` | Returns the value `42` |
 
-## Wersjonowanie i publikacja
+## Versioning and publication
 
-Przed publikacją w GitHub Marketplace:
+Before publishing in GitHub Marketplace:
 
-1. upewnij się, że repozytorium jest publiczne,
-2. utwórz release, na przykład `v1.0.0`,
-3. dodaj stabilny tag główny, na przykład `v1`,
-4. używaj akcji w workflow przez `mzdrenka/CompositeActionRecipe@v1`.
+1. make sure the repository is public,
+2. create a release such as `v1.0.0`,
+3. add a stable major tag such as `v1`,
+4. reference the action as `mzdrenka/CompositeActionRecipe@v1`.
 
-To repo zawiera już plik `action.yml`, więc po przygotowaniu opisu, release i tagów może zostać wystawione w Marketplace jako GitHub Action.
+This repository already includes `action.yml`, so after the description, release, and tags are ready, it can be listed in Marketplace as a GitHub Action.

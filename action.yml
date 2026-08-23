@@ -1,4 +1,5 @@
 name: 'Composite Action Recipe'
+author: 'Mateusz Zdrenka'
 description: 'Greets a user, returns 42, and can thank issue reporters with a comment'
 
 inputs:
