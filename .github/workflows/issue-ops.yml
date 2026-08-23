@@ -39,7 +39,7 @@ jobs:
             gh issue edit ${{ github.event.issue.number }} --remove-label repo-request
             message=$message" Please fix the issue and try again by applying the label 'repo-request' again to the issue.";
           fi;
-          gh issue comment ${{ github.event.issue.number }} -b „$mention $message"
+          gh issue comment ${{ github.event.issue.number }} -b "$mention $message"
           exit $exitcode
     outputs: 
       REPO_NAME: ${{ steps.repo-request.outputs.REPO_NAME }}

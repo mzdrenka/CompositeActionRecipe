@@ -12,7 +12,7 @@ body:
   - type: input
     id: name
     attributes:
-      label: Nazwa
+      label: name
       description: "Name of the repository in lower-case and kebab casing."
       placeholder: "name-your-kebab"
     validations:
