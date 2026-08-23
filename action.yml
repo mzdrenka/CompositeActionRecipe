@@ -26,8 +26,8 @@ runs:
           core.notice(`Hello ${whoToGreet}`)
           core.setOutput('answer', 42)
 
-          if (context.eventName === 'issues') {
-           github.rest.issues.createComment({
+          if (context.eventName === 'issues' && context.payload.action === 'opened') {
+           await github.rest.issues.createComment({
              issue_number: context.issue.number,
              owner: context.repo.owner,
              repo: context.repo.repo,
