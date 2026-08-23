@@ -1,31 +1,36 @@
-name: 'Receptura akcji zlozonej'
-description: 'Pozdrawia urzytkownika i zwraca 42'
+name: 'Composite Action Recipe'
+description: 'Greets a user, returns 42, and can thank issue reporters with a comment'
 
 inputs:
   who-to-greet:
-    description: 'Kogo pozdrowic'
+    description: 'Name or handle of the person to greet'
     required: true
     default: 'Świat'
 outputs:
   answer:
-    description: "Odpowiedź na życie, wszechświat i wszystko"
-    value: ${{ steps.deep-thought.outputs.answer }}
+    description: "The answer to life, the universe, and everything"
+    value: ${{ steps.greet.outputs.answer }}
+branding:
+  icon: message-circle
+  color: blue
 
 runs:
   using: 'composite'
   steps:
-    - name: Awesome github script
+    - id: greet
+      name: Greet user and set output
       uses: actions/github-script@v6
       with:
         script: |
-          var whoToGreet = core.getInput('who-to-greet')
+          const whoToGreet = core.getInput('who-to-greet')
           core.notice(`Hello ${whoToGreet}`)
           core.setOutput('answer', 42)
+
           if (context.eventName === 'issues') {
            github.rest.issues.createComment({
              issue_number: context.issue.number,
              owner: context.repo.owner,
              repo: context.repo.repo,
-              body: ' Thanks for reporting!'
+             body: 'Thanks for reporting!'
            })
           }
