@@ -1,0 +1,45 @@
+# Issue ops
+name: issue-ops
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  issue-ops:
+    if: ${{ github.event.label.name == 'repo-request' }}
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      contents: write
+    steps:
+      - name: Issue Forms Body Parser
+        id: parse
+        uses: zentered/issue-forms-body-parser@v2.0.0
+      - name: Repository Request Validation
+        id: repo-request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          repo_name=$(echo '${{ steps.parse.outputs.data }}' | jq -r '.name.text')
+          repo_dept=$(echo '${{ steps.parse.outputs.data }}' | jq -r '.department.text')
+          repo_full_name=$repo_dept-$repo_name
+          echo "REPO_NAME=$repo_full_name" >> "$GITHUB_OUTPUT"
+          mention="@${{ github.event.issue.user.login }}: "
+          message="Requested repository '$repo_full_name' will be sent for approval."
+          exitcode=0
+          if [ -z $repo_full_name ]; 
+            then message="Repository name is empty.";
+            exitcode=1;
+          fi;
+          if [[ "$repo_full_name" =~ [^\-a-zA-Z0-9] ]];
+           then message="Repository name shall be alphanumeric and minus only.";
+           exitcode=1;
+          fi;
+          if [ $exitcode -ne 0 ]; then
+            gh issue edit ${{ github.event.issue.number }} --remove-label repo-request
+            message=$message" Please fix the issue and try again by applying the label 'repo-request' again to the issue.";
+          fi;
+          gh issue comment ${{ github.event.issue.number }} -b „$mention $message"
+          exit $exitcode
+    outputs: 
+      REPO_NAME: ${{ steps.repo-request.outputs.REPO_NAME }}
