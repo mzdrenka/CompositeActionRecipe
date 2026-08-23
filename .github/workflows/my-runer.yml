@@ -1,0 +1,15 @@
+name: Self-Hosted
+
+on: [workflow_dispatch]
+
+jobs:
+
+  main:
+    runs-on: mati
+    steps:
+      - name: Output environment
+        shell: bash
+        run: |-
+          echo "Nazwa runnera: '${{ runner.name }}'"
+          echo "System operacyjny runnera: '${{ runner.os }}'"
+          echo "Pakiet Linuksa Arch dla runnera na serwerze: '${{ runner.arch }}'"
