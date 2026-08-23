@@ -1,5 +1,9 @@
 name: 'Receptura akcji zlozonej'
 description: 'Pozdrawia urzytkownika i zwraca 42'
+branding:
+  icon: anchor
+  color: purple
+author: Mateusz Zdrenka
 
 inputs:
   who-to-greet:
