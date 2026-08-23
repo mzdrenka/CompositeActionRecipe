@@ -14,10 +14,6 @@ outputs:
   answer:
     description: "The answer to life, the universe, and everything"
     value: ${{ steps.greet.outputs.answer }}
-branding:
-  icon: message-square
-  color: blue
-
 runs:
   using: 'composite'
   steps:
