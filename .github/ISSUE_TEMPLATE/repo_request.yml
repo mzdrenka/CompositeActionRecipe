@@ -1,0 +1,31 @@
+name: 'Repository Request'
+description: 'Request a new repository.'
+
+title: 'Repository Request:'
+labels:
+  - 'repo-request'
+  - 'issue-ops'
+assignees:
+  - mzdrenka
+
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Nazwa
+      description: "Name of the repository in lower-case and kebab casing."
+      placeholder: "name-your-kebab"
+    validations:
+      required: true
+  - type: dropdown
+    id: department
+    attributes:
+      label: 'Departament'
+      description: 'Pick your department. It will be used as a prefix for the repository name.'
+      multiple: false
+      options:
+        - dep1
+        - dep2
+      default: 0
+    validations:
+      required: false
